@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() =>
-      _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
-  final List pages = [HomePage()];
+class Homepage extends StatelessWidget {
+  const Homepage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,46 +10,6 @@ class _HomePageState extends State<HomePage> {
     double maxwidth =
         MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(
-        255,
-        237,
-        236,
-        236,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.green,
-        currentIndex: selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        selectedFontSize: 11,
-        unselectedFontSize: 11,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            label: "Anasayfa",
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: "Hesap ve Kart",
-            icon: Icon(Icons.credit_card),
-          ),
-          BottomNavigationBarItem(
-            label: "Başvurular",
-            icon: Icon(Icons.plus_one_rounded),
-          ),
-          BottomNavigationBarItem(
-            label: "İşlemler",
-            icon: Icon(Icons.list),
-          ),
-          BottomNavigationBarItem(
-            label: "Durumum",
-            icon: Icon(Icons.heart_broken),
-          ),
-        ],
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
