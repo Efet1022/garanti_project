@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/account_card.dart';
+import 'package:garanti_project/account_cardPage.dart';
 import 'package:garanti_project/applicationsPage.dart';
 import 'package:garanti_project/homePage.dart';
 import 'package:garanti_project/statusPage.dart';
