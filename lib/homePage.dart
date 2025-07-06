@@ -734,14 +734,18 @@ class Homepage extends StatelessWidget {
                           SizedBox(
                             width: maxwidth * 0.1,
                             child: Image.asset(
-                              "images/ev.png",
+                              "images/youtube.png",
                             ),
                           ),
                           SizedBox(
                             height:
-                                maxheight * 0.015,
+                                maxheight * 0.01,
                           ),
-                          Text("Evim"),
+                          Text(
+                            "Dijital Aboneliklerim",
+                            textAlign:
+                                TextAlign.center,
+                          ),
                         ],
                       ),
                     ),
@@ -760,14 +764,18 @@ class Homepage extends StatelessWidget {
                           SizedBox(
                             width: maxwidth * 0.1,
                             child: Image.asset(
-                              "images/ev.png",
+                              "images/yaprak.png",
                             ),
                           ),
                           SizedBox(
                             height:
-                                maxheight * 0.015,
+                                maxheight * 0.01,
                           ),
-                          Text("Evim"),
+                          Text(
+                            "Ekolojik\nDurumum",
+                            textAlign:
+                                TextAlign.center,
+                          ),
                         ],
                       ),
                     ),
