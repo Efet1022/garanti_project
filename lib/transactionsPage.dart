@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:garanti_project/paymentsPage.dart';
 
-class Transactionspage extends StatelessWidget {
+class Transactionspage extends StatefulWidget {
   const Transactionspage({super.key});
 
+  @override
+  State<Transactionspage> createState() =>
+      _TransactionspageState();
+}
+
+class _TransactionspageState
+    extends State<Transactionspage> {
   @override
   Widget build(BuildContext context) {
     double maxheight =
@@ -67,17 +75,63 @@ class Transactionspage extends StatelessWidget {
                       maxwidth,
                     ),
                     Dividing(maxwidth),
-                    ListTileKategoriler(
-                      Icon(
-                        Icons
-                            .account_balance_wallet,
-                        color: Colors.teal,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      PaymentsPage(),
+                            ),
+                          );
+                        });
+                      },
+                      child: SizedBox(
+                        height: maxheight * 0.038,
+                        width: maxwidth,
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(
+                                      right: 10,
+                                    ),
+                                child: Icon(
+                                  Icons
+                                      .account_balance_wallet,
+                                  color:
+                                      Colors.teal,
+                                ),
+                              ),
+                              Text("Ödemeler"),
+                              SizedBox(
+                                width:
+                                    maxwidth *
+                                    0.01,
+                              ),
+                              SizedBox(
+                                height:
+                                    maxheight *
+                                    0.025,
+                                child: Image.asset(
+                                  "images/yeni.png",
+                                ),
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_right,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      "Ödemeler",
-                      maxheight,
-                      maxwidth,
-                      categoryImage:
-                          "images/yeni.png",
                     ),
                     Dividing(maxwidth),
                     ListTileKategoriler(

@@ -53,6 +53,8 @@ class AccountCard extends StatelessWidget {
                       BorderRadius.circular(10),
                 ),
                 child: Column(
+                  mainAxisAlignment:
+                      MainAxisAlignment.center,
                   children: [
                     ListTileKategoriler(
                       Icon(
