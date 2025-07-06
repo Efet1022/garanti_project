@@ -52,11 +52,7 @@ class PaymentsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: maxheight * 0.01,
-                    ),
-
-                    SizedBox(
-                      height: maxheight * 0.03,
+                      height: maxheight * 0.04,
                     ),
                     Container(
                       height: maxheight * 0.96,
