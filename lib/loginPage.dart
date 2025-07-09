@@ -10,30 +10,40 @@ class Loginpage extends StatefulWidget {
 }
 
 class _HomePageState extends State<Loginpage> {
+  //Login kısmına şifre doğrulayabilmek için atadım
   final GlobalKey<FormState> validatorkey =
       GlobalKey<FormState>();
-  bool isVisible = true;
+  bool isVisible =
+      true; //Giriş yap tusuna basılınca textformfield çıkması için atadım
   @override
   Widget build(BuildContext context) {
     var maxheight =
-        MediaQuery.sizeOf(context).height;
+        MediaQuery.sizeOf(
+          context,
+        ).height; //Ekranın güncel sayfa yüksekliği
     var maxwidth =
-        MediaQuery.sizeOf(context).width;
+        MediaQuery.sizeOf(
+          context,
+        ).width; //Ekranın güncel sayfa genişliği
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset:
+          false, //Draggable Scrollable sheet varken klavye çıktığında üstünde kalmaması için yaptım.True olursa klavyenin üstüne çıkar
       body: Stack(
         children: [
           Container(
+            //Login sayfasındaki resim koymak için yaptım.
             height: maxheight,
             width: maxwidth,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  "images/Homepage.jpg",
+                  "images/Homepage.jpg", //Ekranda gözüken resim
                 ),
                 fit: BoxFit.fill,
-                opacity: 0.7,
+                opacity:
+                    0.7, //Opacity değerini düşürürek arka plan resminin orjinali ile aynı olmasını sağladım
                 colorFilter: ColorFilter.mode(
+                  //Renk filtresi vererek resmin daha koyu olmasını sağladım
                   Colors.black38,
                   BlendMode.darken,
                 ),
@@ -49,16 +59,21 @@ class _HomePageState extends State<Loginpage> {
                   mainAxisAlignment:
                       MainAxisAlignment.center,
                   children: [
-                    Spacer(flex: 12),
+                    Spacer(
+                      flex: 12,
+                    ), //Oran Vererek ekrandaki yerini ayarladım
                     Container(
                       height: maxheight * 0.14,
                       child: Image.asset(
-                        "images/GarantiLogo.png",
+                        "images/GarantiLogo.png", //Logo
                         fit: BoxFit.fill,
                       ),
                     ),
-                    Spacer(flex: 9),
+                    Spacer(
+                      flex: 9,
+                    ), //Oran vererek bildirim yerini ayarladım
                     CircleAvatar(
+                      //Bildirim ikonununa verdim etrafı yuvarlak olsun diye
                       backgroundColor:
                           Colors.black12,
                       radius: 20,
@@ -68,10 +83,13 @@ class _HomePageState extends State<Loginpage> {
                         color: Colors.white,
                       ),
                     ),
-                    Spacer(flex: 1),
+                    Spacer(
+                      flex: 1,
+                    ), //Ekranın sağ tarafına yapışmasın diye
                   ],
                 ),
                 SizedBox(
+                  //Logo ve profit fotosu arasındaki boşluk
                   height: maxheight * 0.15,
                 ),
                 Row(
@@ -80,6 +98,7 @@ class _HomePageState extends State<Loginpage> {
                       MainAxisAlignment.center,
                   children: [
                     Container(
+                      //Profil fotosunun etrafındaki beyaz çember için verdim
                       height: maxheight * 0.07,
                       width: maxwidth * 0.15,
                       decoration: BoxDecoration(
@@ -89,11 +108,12 @@ class _HomePageState extends State<Loginpage> {
                         ),
                         borderRadius:
                             BorderRadius.circular(
+                              //Yuvarlak olması için çemberin
                               100,
                             ),
                         image: DecorationImage(
                           image: AssetImage(
-                            "images/profilePhoto.jpg",
+                            "images/profilePhoto.jpg", //Profil fotosu
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -102,6 +122,7 @@ class _HomePageState extends State<Loginpage> {
                   ],
                 ),
                 SizedBox(
+                  //Foto ile kullanıcının ismi arasındaki boşluk
                   height: maxheight * 0.02,
                 ),
                 Row(
@@ -121,6 +142,7 @@ class _HomePageState extends State<Loginpage> {
                   ],
                 ),
                 SizedBox(
+                  //Kullanıcı ismi ile button arasındaki boşluk
                   height: maxheight * 0.02,
                 ),
                 Row(
@@ -142,10 +164,11 @@ class _HomePageState extends State<Loginpage> {
                           child:
                               isVisible
                                   ? TextButton(
+                                    //Giriş yap buttonu için
                                     onPressed: () {
                                       setState(() {
                                         isVisible =
-                                            !isVisible;
+                                            !isVisible; //Üstüne basıldığında kaybolması için
                                       });
                                     },
                                     style: TextButton.styleFrom(
@@ -175,12 +198,15 @@ class _HomePageState extends State<Loginpage> {
                                     ),
                                   )
                                   : Form(
+                                    //Forma alarak validate ediyorum şifrenin doğruluğunu
                                     key:
                                         validatorkey,
                                     child: TextFormField(
+                                      //Çıkan textformfield giriş yapa basılınca
                                       maxLength:
-                                          6,
+                                          6, //Maks uzunluk için
                                       validator: (
+                                        //Şifrenin en az 6 basamaklı ve doğru olması için
                                         value,
                                       ) {
                                         if (value!
@@ -203,7 +229,7 @@ class _HomePageState extends State<Loginpage> {
                                       },
                                       decoration: InputDecoration(
                                         hintText:
-                                            "• • • • • •",
+                                            "• • • • • •", //6 haneli bir şifre istediğimizi belli etmek için
                                         hintStyle: TextStyle(
                                           wordSpacing:
                                               20,
@@ -226,25 +252,28 @@ class _HomePageState extends State<Loginpage> {
                                               ),
                                         ),
                                         suffixIcon: GestureDetector(
+                                          //Yeşil ikona basınca validate edip doğru ise uygulamaya girmek için
                                           onTap: () {
                                             if (validatorkey
                                                 .currentState!
                                                 .validate()) {
                                               setState(() {
                                                 Navigator.pushReplacement(
+                                                  //Bu sayfaya tekrar dönmeyeceğimiz için dönüş imkanı vermiyoruz
                                                   context,
                                                   MaterialPageRoute(
                                                     builder:
                                                         (
                                                           context,
                                                         ) =>
-                                                            BasePage(),
+                                                            BasePage(), //Anasayfaya gidiyoruz
                                                   ),
                                                 );
                                               });
                                             }
                                           },
                                           child: Icon(
+                                            //sağ gösterin yeşil ikon textformfieldda
                                             Icons
                                                 .arrow_right_alt_outlined,
                                             size:
@@ -254,9 +283,9 @@ class _HomePageState extends State<Loginpage> {
                                           ),
                                         ),
                                       ),
-                                      obscureText:
+                                      obscureText: //Yazılan sayıların gözükmemesi için ekranda
                                           true,
-                                      keyboardType:
+                                      keyboardType: //Klavyenin sayı klavyesi olması için
                                           TextInputType
                                               .number,
                                     ),
@@ -267,6 +296,7 @@ class _HomePageState extends State<Loginpage> {
                   ],
                 ),
                 SizedBox(
+                  //Giriş yap buttonu altı boşluk
                   height: maxheight * 0.02,
                 ),
                 Padding(
@@ -305,27 +335,34 @@ class _HomePageState extends State<Loginpage> {
           ),
           DraggableScrollableSheet(
             //Draggable Scrollable Sheet
-            initialChildSize: 0.25,
-            minChildSize: 0.1,
-            maxChildSize: 0.6,
+            initialChildSize:
+                0.25, //ekran açıldığındaki boyutu
+            minChildSize:
+                0.1, //minimum ekrandaki boyutu
+            maxChildSize:
+                0.6, //Maks ekrandaki boyutu
             builder: (context, sc) {
               return Container(
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(
+                    //Containerın rengi
                     255,
                     237,
                     236,
                     236,
                   ),
-                  borderRadius:
+                  borderRadius: //Container ın üstündeki kıvrımlar
                       BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
+                    top: Radius.circular(20),
+                  ),
                   boxShadow: [
-                    BoxShadow(blurRadius: 10),
+                    BoxShadow(
+                      blurRadius: 10,
+                    ), //Container ın gölgesi
                   ],
                 ),
                 child: SingleChildScrollView(
+                  //Aşağı doğru scroll özelliği
                   controller: sc,
                   child: Column(
                     children: [
@@ -338,6 +375,7 @@ class _HomePageState extends State<Loginpage> {
                                 .center,
                         children: [
                           Icon(
+                            //Üstteki ufak ikon
                             Icons
                                 .keyboard_arrow_up,
                           ),
@@ -357,6 +395,7 @@ class _HomePageState extends State<Loginpage> {
                                   .spaceAround,
                           children: [
                             Container(
+                              //Fast işlemleri
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment
@@ -412,6 +451,7 @@ class _HomePageState extends State<Loginpage> {
                                   ),
                             ),
                             Container(
+                              //Para çek / yatır
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment
@@ -466,6 +506,7 @@ class _HomePageState extends State<Loginpage> {
                                   ),
                             ),
                             Container(
+                              //Mobilden Öde
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment
@@ -520,6 +561,7 @@ class _HomePageState extends State<Loginpage> {
                                   ),
                             ),
                             Container(
+                              //Hesaplama yap
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment
@@ -577,6 +619,7 @@ class _HomePageState extends State<Loginpage> {
                         ),
                       ),
                       Container(
+                        //Solunda kilit logosu olan container
                         margin:
                             EdgeInsets.symmetric(
                               horizontal: 14,
@@ -705,6 +748,7 @@ class _HomePageState extends State<Loginpage> {
                         ),
                       ),
                       Container(
+                        //Iban ve Tr Karekod Container
                         margin: EdgeInsets.only(
                           top: 20,
                           left: 14,
@@ -748,6 +792,7 @@ class _HomePageState extends State<Loginpage> {
                         ),
                       ),
                       Container(
+                        //Piyasa bilgileri container
                         margin: EdgeInsets.only(
                           top: 20,
                           left: 14,
@@ -1229,6 +1274,7 @@ class _HomePageState extends State<Loginpage> {
                         ),
                       ),
                       Padding(
+                        //En altta bulanan resim Container
                         padding:
                             const EdgeInsets.symmetric(
                               vertical: 15,
@@ -1245,6 +1291,7 @@ class _HomePageState extends State<Loginpage> {
                         ),
                       ),
                       Row(
+                        //English yazısı
                         mainAxisAlignment:
                             MainAxisAlignment
                                 .center,
@@ -1257,7 +1304,9 @@ class _HomePageState extends State<Loginpage> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 40),
+                      SizedBox(
+                        height: maxheight * 0.03,
+                      ), //Alt tarafta ufak ir boşluk olsun diye
                     ],
                   ),
                 ),

@@ -16,6 +16,7 @@ class Applicationspage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            //Başvurular yazısı kaybolsun diye sliver app bar koydum
             expandedHeight: maxheight * 0.11,
             actions: [
               Icon(
@@ -34,6 +35,7 @@ class Applicationspage extends StatelessWidget {
             centerTitle: true,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
+              //Hareketli bir alan oluşturmak için
               collapseMode: CollapseMode.pin,
               background: Padding(
                 padding: EdgeInsets.only(
@@ -52,6 +54,7 @@ class Applicationspage extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
+            //Sliver tipinde kullanmamak için sadece
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20,
@@ -63,7 +66,9 @@ class Applicationspage extends StatelessWidget {
                     SizedBox(
                       height: maxheight * 0.22,
                       child: PageView(
-                        controller: controller,
+                        //Sayfaların yana kaymasını sağlıyor
+                        controller:
+                            controller, //Hangi resimde olduğumuzu kontrol etmek için
                         children: [
                           ClipRRect(
                             borderRadius:
@@ -109,6 +114,7 @@ class Applicationspage extends StatelessWidget {
                       height: maxheight * 0.01,
                     ),
                     SmoothPageIndicator(
+                      //Resimlerin altındaki ufak toplar
                       controller: controller,
                       count: 3,
                       effect: ScrollingDotsEffect(
@@ -157,7 +163,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.attach_money,
                               color: Colors.teal,
                             ),
                             "Kredi/Avans Hesap",
@@ -168,7 +174,8 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons
+                                  .account_balance_wallet,
                               color: Colors.teal,
                             ),
                             "Vadeli Hesap",
@@ -179,7 +186,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.show_chart,
                               color: Colors.teal,
                             ),
                             "Hızlı Limit",
@@ -192,7 +199,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.trending_up,
                               color: Colors.teal,
                             ),
                             "Yatırım",
@@ -203,7 +210,8 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons
+                                  .account_balance,
                               color: Colors.teal,
                             ),
                             "Vadesiz Hesap",
@@ -214,7 +222,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.receipt_long,
                               color: Colors.teal,
                             ),
                             "Fatura Talimatı",
@@ -225,7 +233,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.shield,
                               color: Colors.teal,
                             ),
                             "Sigorta",
@@ -236,7 +244,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.eco,
                               color: Colors.teal,
                             ),
                             "BES",
@@ -247,7 +255,8 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons
+                                  .directions_car,
                               color: Colors.teal,
                             ),
                             "HGS",
@@ -258,7 +267,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.elderly,
                               color: Colors.teal,
                             ),
                             "Emekli Bankacılığı",
@@ -269,7 +278,7 @@ class Applicationspage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileCategories(
                             Icon(
-                              Icons.credit_card,
+                              Icons.point_of_sale,
                               color: Colors.teal,
                             ),
                             "Üye İşyeri (POS) Başvuru",

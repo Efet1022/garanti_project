@@ -12,6 +12,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          //Scrollable özelliği için
           child: Column(
             children: [
               Padding(
@@ -20,6 +21,7 @@ class Homepage extends StatelessWidget {
                       horizontal: 15,
                     ),
                 child: Row(
+                  //En üst sıradaki circle avatar ve ikonlar
                   children: [
                     CircleAvatar(
                       backgroundImage: AssetImage(
@@ -66,6 +68,7 @@ class Homepage extends StatelessWidget {
                       horizontal: 15,
                     ),
                 child: SingleChildScrollView(
+                  //Üst kısımda bulnan containerları sağ sola scroll edebilmek için yaptım
                   scrollDirection:
                       Axis.horizontal,
                   child: Row(
@@ -357,6 +360,7 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               Padding(
+                //Bakiye ve hesap bilgilerini yazan container
                 padding:
                     const EdgeInsets.symmetric(
                       horizontal: 15,
@@ -445,6 +449,7 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               Container(
+                //kartın resminin bulunduğu ve kullanılabilir limitin bulunduğu container
                 margin: EdgeInsets.only(
                   bottom: 15,
                 ),
@@ -531,6 +536,7 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               Container(
+                // 7/24 Nakit Avans Containerı
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.symmetric(
                   horizontal: 15,
@@ -557,6 +563,7 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               Stack(
+                //Net varlığım kısmında bulunan resmi container ın üstüne koymak için stack içine aldım
                 children: [
                   Container(
                     margin: EdgeInsets.all(15),
@@ -618,6 +625,7 @@ class Homepage extends StatelessWidget {
                 ],
               ),
               Padding(
+                //Yan yana 3 container ın oldupu kısım aracım, evim ve seyahatim
                 padding:
                     const EdgeInsets.symmetric(
                       vertical: 5,
@@ -710,6 +718,7 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               Padding(
+                //Dijital Abonelik ve ekolojik durum kısmı. 3 adet container var biri sadece boşluk olması için rengi yok
                 padding:
                     const EdgeInsets.symmetric(
                       horizontal: 15,
@@ -787,6 +796,7 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               Container(
+                //Hatalı giriş kısmı
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.symmetric(
                   vertical: 15,

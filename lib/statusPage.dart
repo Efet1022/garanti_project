@@ -28,6 +28,7 @@ class Statuspage extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
+                      //Durumum başlık
                       children: [
                         Text(
                           "Durumum",
@@ -39,8 +40,12 @@ class Statuspage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 30.h),
+                    SizedBox(
+                      //Başlık ile boşluk
+                      height: 30.h,
+                    ),
                     Container(
+                      //Varlıklar / Borçlar Container tamamı
                       height: 308,
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -271,6 +276,7 @@ class Statuspage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      //Araç evim seyahatim kısmı
                       padding:
                           const EdgeInsets.only(
                             top: 15,
@@ -371,6 +377,7 @@ class Statuspage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      //Dijital abonelik ve Ekolojik durum kısmı fazladan container boşluk vermek için
                       padding:
                           const EdgeInsets.only(
                             top: 5,
@@ -455,6 +462,7 @@ class Statuspage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      //Finansal sağlık yazısı
                       padding:
                           const EdgeInsets.only(
                             top: 15,
@@ -473,6 +481,7 @@ class Statuspage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      //Finansal sağlık resmi ve alttaki yazısı
                       padding:
                           const EdgeInsets.only(
                             top: 10,
@@ -511,6 +520,7 @@ class Statuspage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      //Planlar yazısı
                       padding:
                           const EdgeInsets.only(
                             top: 10,
@@ -529,6 +539,7 @@ class Statuspage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      //Planlar altındaki container
                       padding:
                           const EdgeInsets.only(
                             top: 5,
@@ -631,6 +642,7 @@ class Statuspage extends StatelessWidget {
 }
 
 Dividing() {
+  // Boşluk vermek için
   return Divider(
     thickness: 1,
     color: const Color.fromARGB(

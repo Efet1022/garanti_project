@@ -37,6 +37,7 @@ class _TransactionspageState
               ),
               SizedBox(height: maxheight * 0.04),
               Row(
+                // Başlık
                 children: [
                   Text(
                     "İşlemler",

@@ -33,16 +33,20 @@ class _HomePageState extends State<BasePage> {
         236,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        //Diğer sayfalara geçiş için oluşturdum
         selectedItemColor: Colors.green,
         currentIndex: selectedIndex,
         onTap: (int index) {
           setState(() {
-            selectedIndex = index;
+            selectedIndex =
+                index; //Yukarıda tanımladığım sayfa listesine göre hangi konu verdiysem o sırayla verdim yoksa hatalı sayfaya geçiş yapar
           });
         },
         selectedFontSize: 11,
         unselectedFontSize: 11,
-        type: BottomNavigationBarType.fixed,
+        type:
+            BottomNavigationBarType
+                .fixed, //Bütün ikonları gözükmesi için yazdım
         items: [
           BottomNavigationBarItem(
             label: "Anasayfa",

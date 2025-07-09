@@ -30,6 +30,7 @@ class AccountCard extends StatelessWidget {
               ),
               SizedBox(height: maxheight * 0.04),
               Row(
+                // Hesap ve Kart başlığı
                 children: [
                   Text(
                     "Hesap ve Kart",
@@ -151,6 +152,7 @@ class AccountCard extends StatelessWidget {
                 ),
               ),
               Container(
+                //Ayrı container da bulunan benim bankacım kısmı
                 width: maxwidth,
                 height: maxheight * 0.06,
                 decoration: BoxDecoration(
@@ -240,6 +242,7 @@ class AccountCard extends StatelessWidget {
 }
 
 ListTileKategoriler(
+  //Kategorileri yapmak için fonksiyon yazım kod tekrarı olmasın diye
   Icon icon,
   String categoryTitle,
   double maxheight,
@@ -270,6 +273,7 @@ ListTileKategoriler(
 }
 
 Dividing(double maxwidth) {
+  //Fonksiyon sadece aradaki çizgiyi çekmek için
   return Divider(
     thickness: 1,
     color: const Color.fromARGB(
