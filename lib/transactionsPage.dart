@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:garanti_project/money_Transfer.dart';
 import 'package:garanti_project/paymentsPage.dart';
+import 'package:garanti_project/qr_Code_Payments.dart';
 
 class Transactionspage extends StatefulWidget {
   const Transactionspage({super.key});
@@ -66,14 +68,50 @@ class _TransactionspageState
                       MainAxisAlignment
                           .spaceEvenly,
                   children: [
-                    ListTileKategoriler(
-                      Icon(
-                        Icons.sync_alt,
-                        color: Colors.teal,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    MoneyTransfer(),
+                          ),
+                        );
+                      },
+                      child: SizedBox(
+                        height: maxheight * 0.038,
+                        width: maxwidth,
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(
+                                      right: 10,
+                                    ),
+                                child: Icon(
+                                  Icons.sync_alt,
+                                  color:
+                                      Colors.teal,
+                                ),
+                              ),
+                              Text(
+                                "Para Transferleri",
+                              ),
+
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_right,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      "Para Transferleri",
-                      maxheight,
-                      maxwidth,
                     ),
                     Dividing(maxwidth),
                     GestureDetector(
@@ -187,14 +225,49 @@ class _TransactionspageState
                       maxwidth,
                     ),
                     Dividing(maxwidth),
-                    ListTileKategoriler(
-                      Icon(
-                        Icons.qr_code,
-                        color: Colors.teal,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    QrCodePayments(),
+                          ),
+                        );
+                      },
+                      child: SizedBox(
+                        height: maxheight * 0.038,
+                        width: maxwidth,
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(
+                                      right: 10,
+                                    ),
+                                child: Icon(
+                                  Icons.qr_code,
+                                  color:
+                                      Colors.teal,
+                                ),
+                              ),
+                              Text(
+                                "TR Karekod İşlemleri",
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_right,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      "TR Karekod İşlemleri",
-                      maxheight,
-                      maxwidth,
                     ),
                     Dividing(maxwidth),
                     ListTileKategoriler(

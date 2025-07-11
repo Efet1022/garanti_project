@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:garanti_project/bills.dart';
 
 class PaymentsPage extends StatelessWidget {
   const PaymentsPage({super.key});
@@ -66,10 +67,55 @@ class PaymentsPage extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          ListTileKategoriler(
-                            "Fatura",
-                            maxheight,
-                            maxwidth,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) =>
+                                          Bills(),
+                                ),
+                              );
+                            },
+                            child: SizedBox(
+                              height:
+                                  maxheight *
+                                  0.04,
+                              width: maxwidth,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(
+                                      horizontal:
+                                          10,
+                                    ),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(
+                                        horizontal:
+                                            10,
+                                        vertical:
+                                            8,
+                                      ),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Fatura",
+                                        style: TextStyle(
+                                          fontSize:
+                                              15,
+                                        ),
+                                      ),
+                                      Spacer(),
+                                      Icon(
+                                        Icons
+                                            .arrow_right,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                           Dividing(maxwidth),
                           ListTileKategoriler(

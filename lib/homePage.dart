@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:garanti_project/bills.dart';
+import 'package:garanti_project/money_Transfer.dart';
+import 'package:garanti_project/qr_Code_Payments.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -73,86 +76,39 @@ class Homepage extends StatelessWidget {
                       Axis.horizontal,
                   child: Row(
                     children: [
-                      Container(
-                        width: maxwidth * 0.21,
-                        height: maxheight * 0.13,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(
-                                5,
-                              ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment:
-                              MainAxisAlignment
-                                  .center,
-                          children: [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor:
-                                  Colors.teal,
-                              child: Icon(
-                                Icons.qr_code,
-                                color:
-                                    Colors.white,
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      QrCodePayments(),
                             ),
-                            SizedBox(
-                              height:
-                                  maxheight *
-                                  0.015,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(
-                                    horizontal: 2,
-                                  ),
-                              child: Text(
-                                "TR Karekod İşlemleri",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight:
-                                      FontWeight
-                                          .w600,
+                          );
+                        },
+                        child: Container(
+                          width: maxwidth * 0.21,
+                          height:
+                              maxheight * 0.13,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.circular(
+                                  5,
                                 ),
-                                textAlign:
-                                    TextAlign
-                                        .center,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: maxwidth * 0.01,
-                      ),
-                      Container(
-                        width: maxwidth * 0.21,
-                        height: maxheight * 0.13,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(
-                                5,
-                              ),
-                        ),
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.symmetric(
-                                vertical: 12,
-                              ),
+                          ),
                           child: Column(
                             mainAxisAlignment:
                                 MainAxisAlignment
-                                    .start,
+                                    .center,
                             children: [
                               CircleAvatar(
                                 radius: 25,
                                 backgroundColor:
                                     Colors.teal,
                                 child: Icon(
-                                  Icons.receipt,
+                                  Icons.qr_code,
                                   color:
                                       Colors
                                           .white,
@@ -161,7 +117,7 @@ class Homepage extends StatelessWidget {
                               SizedBox(
                                 height:
                                     maxheight *
-                                    0.02,
+                                    0.015,
                               ),
                               Padding(
                                 padding:
@@ -170,9 +126,9 @@ class Homepage extends StatelessWidget {
                                           2,
                                     ),
                                 child: Text(
-                                  "Fatura",
+                                  "TR Karekod İşlemleri",
                                   style: TextStyle(
-                                    fontSize: 11,
+                                    fontSize: 12,
                                     fontWeight:
                                         FontWeight
                                             .w600,
@@ -183,6 +139,82 @@ class Homepage extends StatelessWidget {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: maxwidth * 0.01,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      Bills(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: maxwidth * 0.21,
+                          height:
+                              maxheight * 0.13,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.circular(
+                                  5,
+                                ),
+                          ),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                ),
+                            child: Column(
+                              mainAxisAlignment:
+                                  MainAxisAlignment
+                                      .start,
+                              children: [
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundColor:
+                                      Colors.teal,
+                                  child: Icon(
+                                    Icons.receipt,
+                                    color:
+                                        Colors
+                                            .white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height:
+                                      maxheight *
+                                      0.02,
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(
+                                        horizontal:
+                                            2,
+                                      ),
+                                  child: Text(
+                                    "Fatura",
+                                    style: TextStyle(
+                                      fontSize:
+                                          11,
+                                      fontWeight:
+                                          FontWeight
+                                              .w600,
+                                    ),
+                                    textAlign:
+                                        TextAlign
+                                            .center,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -238,50 +270,66 @@ class Homepage extends StatelessWidget {
                       SizedBox(
                         width: maxwidth * 0.01,
                       ),
-                      Container(
-                        width: maxwidth * 0.21,
-                        height: maxheight * 0.13,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(
-                                5,
-                              ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment:
-                              MainAxisAlignment
-                                  .start,
-                          children: [
-                            SizedBox(height: 12),
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor:
-                                  Colors.teal,
-                              child: Icon(
-                                Icons.sync_alt,
-                                color:
-                                    Colors.white,
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      MoneyTransfer(),
                             ),
-                            SizedBox(
-                              height:
-                                  maxheight *
-                                  0.02,
-                            ),
-                            Text(
-                              "Para Transferi",
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight:
-                                    FontWeight
-                                        .w600,
+                          );
+                        },
+                        child: Container(
+                          width: maxwidth * 0.21,
+                          height:
+                              maxheight * 0.13,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.circular(
+                                  5,
+                                ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment:
+                                MainAxisAlignment
+                                    .start,
+                            children: [
+                              SizedBox(
+                                height: 12,
                               ),
-                              textAlign:
-                                  TextAlign
-                                      .center,
-                            ),
-                          ],
+                              CircleAvatar(
+                                radius: 25,
+                                backgroundColor:
+                                    Colors.teal,
+                                child: Icon(
+                                  Icons.sync_alt,
+                                  color:
+                                      Colors
+                                          .white,
+                                ),
+                              ),
+                              SizedBox(
+                                height:
+                                    maxheight *
+                                    0.02,
+                              ),
+                              Text(
+                                "Para Transferi",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight:
+                                      FontWeight
+                                          .w600,
+                                ),
+                                textAlign:
+                                    TextAlign
+                                        .center,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
