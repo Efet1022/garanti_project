@@ -21,10 +21,15 @@ class _CreditCardPaymentState
         MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.teal,
-          size: 30,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.teal,
+            size: 30,
+          ),
         ),
         actions: [
           Icon(
