@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:garanti_project/views/bills.dart';
+import 'package:garanti_project/views/credit_Card_Payment.dart';
 import 'package:garanti_project/views/money_Transfer.dart';
 import 'package:garanti_project/views/qr_Code_Payments.dart';
 
@@ -221,50 +222,67 @@ class Homepage extends StatelessWidget {
                       SizedBox(
                         width: maxwidth * 0.01,
                       ),
-                      Container(
-                        width: maxwidth * 0.21,
-                        height: maxheight * 0.13,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(
-                                5,
-                              ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment:
-                              MainAxisAlignment
-                                  .start,
-                          children: [
-                            SizedBox(height: 12),
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor:
-                                  Colors.teal,
-                              child: Icon(
-                                Icons.credit_card,
-                                color:
-                                    Colors.white,
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) =>
+                                      CreditCardPayment(),
                             ),
-                            SizedBox(
-                              height:
-                                  maxheight *
-                                  0.02,
-                            ),
-                            Text(
-                              "Kart Borcu Öde",
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight:
-                                    FontWeight
-                                        .w600,
+                          );
+                        },
+                        child: Container(
+                          width: maxwidth * 0.21,
+                          height:
+                              maxheight * 0.13,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.circular(
+                                  5,
+                                ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment:
+                                MainAxisAlignment
+                                    .start,
+                            children: [
+                              SizedBox(
+                                height: 12,
                               ),
-                              textAlign:
-                                  TextAlign
-                                      .center,
-                            ),
-                          ],
+                              CircleAvatar(
+                                radius: 25,
+                                backgroundColor:
+                                    Colors.teal,
+                                child: Icon(
+                                  Icons
+                                      .credit_card,
+                                  color:
+                                      Colors
+                                          .white,
+                                ),
+                              ),
+                              SizedBox(
+                                height:
+                                    maxheight *
+                                    0.02,
+                              ),
+                              Text(
+                                "Kart Borcu Öde",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight:
+                                      FontWeight
+                                          .w600,
+                                ),
+                                textAlign:
+                                    TextAlign
+                                        .center,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
