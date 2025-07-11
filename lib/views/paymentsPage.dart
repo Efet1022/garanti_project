@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/bills.dart';
+import 'package:garanti_project/views/bills.dart';
 
 class PaymentsPage extends StatelessWidget {
   const PaymentsPage({super.key});

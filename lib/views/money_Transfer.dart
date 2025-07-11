@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/show_Less_Widget.dart';
-import 'package:garanti_project/show_More_Widget.dart';
+import 'package:garanti_project/widgets/show_Less_Widget.dart';
+import 'package:garanti_project/widgets/show_More_Widget.dart';
 
 class MoneyTransfer extends StatefulWidget {
   const MoneyTransfer({super.key});

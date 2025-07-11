@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/bills.dart';
-import 'package:garanti_project/money_Transfer.dart';
-import 'package:garanti_project/qr_Code_Payments.dart';
+import 'package:garanti_project/views/bills.dart';
+import 'package:garanti_project/views/money_Transfer.dart';
+import 'package:garanti_project/views/qr_Code_Payments.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});

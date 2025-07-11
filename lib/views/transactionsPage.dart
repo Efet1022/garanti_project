@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/money_Transfer.dart';
-import 'package:garanti_project/paymentsPage.dart';
-import 'package:garanti_project/qr_Code_Payments.dart';
+import 'package:garanti_project/views/money_Transfer.dart';
+import 'package:garanti_project/views/paymentsPage.dart';
+import 'package:garanti_project/views/qr_Code_Payments.dart';
 
 class Transactionspage extends StatefulWidget {
   const Transactionspage({super.key});

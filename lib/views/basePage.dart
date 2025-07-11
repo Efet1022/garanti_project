@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/account_cardPage.dart';
-import 'package:garanti_project/applicationsPage.dart';
-import 'package:garanti_project/homePage.dart';
-import 'package:garanti_project/statusPage.dart';
-import 'package:garanti_project/transactionsPage.dart';
+import 'package:garanti_project/views/account_cardPage.dart';
+import 'package:garanti_project/views/applicationsPage.dart';
+import 'package:garanti_project/views/homePage.dart';
+import 'package:garanti_project/views/statusPage.dart';
+import 'package:garanti_project/views/transactionsPage.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({super.key});
