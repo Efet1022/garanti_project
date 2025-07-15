@@ -5,31 +5,36 @@ class QrCodePayments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ekran boyutlarını alıyoruz
     double maxheight =
         MediaQuery.of(context).size.height;
     double maxwidth =
         MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
+        // Geri tuşu için GestureDetector kullanılıyor
         leading: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // Geri git
           },
           child: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back, // Geri ikonu
             color: Colors.teal,
             size: 30,
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(
+          15.0,
+        ), // Sayfa genel padding
         child: Column(
           children: [
             Row(
               children: [
                 Text(
-                  "TR Karekod İşlemleri",
+                  "TR Karekod İşlemleri", // Sayfa başlığı
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
@@ -37,14 +42,21 @@ class QrCodePayments extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: maxheight * 0.025),
+            SizedBox(
+              height: maxheight * 0.025,
+            ), // Başlık altı boşluk
+            // İçerik kutusu (3 satırlı seçenekler)
             Container(
               width: maxwidth,
               height: maxheight * 0.19,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color:
+                    Colors
+                        .white, // Beyaz arka plan
                 borderRadius:
-                    BorderRadius.circular(10),
+                    BorderRadius.circular(
+                      10,
+                    ), // Köşeleri yuvarla
               ),
               child: Padding(
                 padding:
@@ -54,8 +66,9 @@ class QrCodePayments extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment:
                       MainAxisAlignment
-                          .spaceEvenly,
+                          .spaceEvenly, // Dikeyde eşit boşluk
                   children: [
+                    // 1. seçenek: Para Çek/Yatır
                     Padding(
                       padding:
                           const EdgeInsets.symmetric(
@@ -64,17 +77,22 @@ class QrCodePayments extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            "Para Çek/Yatır",
+                            "Para Çek/Yatır", // Seçenek başlığı
                             style: TextStyle(
                               fontSize: 17,
                             ),
                           ),
                           Spacer(),
-                          Icon(Icons.arrow_right),
+                          Icon(
+                            Icons.arrow_right,
+                          ), // Sağ ok
                         ],
                       ),
                     ),
-                    Dividing(maxwidth),
+                    Dividing(
+                      maxwidth,
+                    ), // Ayırıcı çizgi
+                    // 2. seçenek: TR Karekod ile Öde
                     Padding(
                       padding:
                           const EdgeInsets.symmetric(
@@ -94,6 +112,8 @@ class QrCodePayments extends StatelessWidget {
                       ),
                     ),
                     Dividing(maxwidth),
+
+                    // 3. seçenek: TR Karekod ile Para Gönder
                     Padding(
                       padding:
                           const EdgeInsets.symmetric(
@@ -123,14 +143,15 @@ class QrCodePayments extends StatelessWidget {
   }
 }
 
+// Satırları ayırmak için Divider fonksiyonu
 Dividing(double maxwidth) {
   return Divider(
-    thickness: 1,
+    thickness: 1, // Çizgi kalınlığı
     color: const Color.fromARGB(
       255,
       237,
       236,
       236,
-    ),
+    ), // Açık gri çizgi
   );
 }

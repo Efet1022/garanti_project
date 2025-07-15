@@ -5,7 +5,8 @@ class ShowLessWidget extends StatelessWidget {
   final double maxheight;
   final double maxwidth;
   final VoidCallback
-  onToggle; //Callback fonksiyon verdiğimiz için yan sayfada gerçekleşen işlemi burada zorunlu parametre verdim parent widgetta gerçekleşen işlemi burada kullanabiliyorum
+  onToggle; // Parent widget'tan gelen görünürlük kontrolü için callback fonksiyonu
+
   const ShowLessWidget({
     super.key,
     required this.isVisible,
@@ -21,11 +22,14 @@ class ShowLessWidget extends StatelessWidget {
       height: maxheight * 0.8,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(
+          10,
+        ), // Köşeleri yumuşatılmış beyaz arka plan
       ),
       child: Column(
         mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
+            MainAxisAlignment
+                .spaceAround, // Elemanlar eşit aralıkla yerleştiriliyor
         children: [
           Categories("Kayıtlı Kişiye Transfer"),
           Dividing(maxwidth),
@@ -71,8 +75,11 @@ class ShowLessWidget extends StatelessWidget {
             "Tek Seferlik Transfer Emirlerim",
           ),
           Dividing(maxwidth),
+
+          // "Daha Az Göster" tıklanabilir alan
           GestureDetector(
-            onTap: onToggle,
+            onTap:
+                onToggle, // Tıklanınca callback fonksiyon çalışır (görünürlük değiştirir)
             child: SizedBox(
               height: maxheight * 0.04,
               child: Container(
@@ -96,13 +103,14 @@ class ShowLessWidget extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
 
+// Her transfer kategorisi için satır oluşturan fonksiyon
 Padding Categories(
   String title, {
-  String? image,
+  String?
+  image, // İsteğe bağlı 'yeni' etiketi resmi
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(
@@ -113,26 +121,29 @@ Padding Categories(
       child: Row(
         children: [
           Text(
-            title,
+            title, // Başlık metni
             style: TextStyle(fontSize: 16),
           ),
           SizedBox(width: 5),
           image == null
-              ? SizedBox()
+              ? SizedBox() // Eğer görsel verilmemişse boş kutu döner
               : SizedBox(
                 height: 25,
                 child: Image.asset(
                   "images/yeni.png",
-                ),
+                ), // 'Yeni' görseli
               ),
           Spacer(),
-          Icon(Icons.arrow_right_alt),
+          Icon(
+            Icons.arrow_right_alt,
+          ), // Sağ yön simgesi
         ],
       ),
     ),
   );
 }
 
+// Ayırıcı çizgi
 Dividing(double maxwidth) {
   return Divider(
     height: 0,
@@ -142,6 +153,6 @@ Dividing(double maxwidth) {
       237,
       236,
       236,
-    ),
+    ), // Açık gri çizgi
   );
 }

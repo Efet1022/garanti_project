@@ -5,7 +5,8 @@ class ShowMoreWidget extends StatelessWidget {
   final double maxheight;
   final double maxwidth;
   final VoidCallback
-  onToggle; //Callback fonksiyon verdiğimiz için yan sayfada gerçekleşen işlemi burada zorunlu parametre verdim parent widgetta gerçekleşen işlemi burada kullanabiliyorum
+  onToggle; // Parent widget'tan gelen fonksiyon. "Daha Fazla/Daha Az Göster" geçişi için kullanılır.
+
   const ShowMoreWidget({
     super.key,
     required this.isVisible,
@@ -18,15 +19,20 @@ class ShowMoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: maxwidth,
-      height: maxheight * 0.35,
+      height:
+          maxheight *
+          0.35, // Daha kısa alan (önizleme gibi)
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(
+          10,
+        ), // Köşeleri yumuşatılmış beyaz kutu
       ),
       child: Column(
         mainAxisAlignment:
             MainAxisAlignment.spaceAround,
         children: [
+          // İlk 5 transfer işlemi gösteriliyor
           Categories("Kayıtlı Kişiye Transfer"),
           Dividing(maxwidth),
           Categories(
@@ -44,8 +50,11 @@ class ShowMoreWidget extends StatelessWidget {
             image: "images/yeni.png",
           ),
           Dividing(maxwidth),
+
+          // "Daha Fazla Göster" tıklanabilir satır
           GestureDetector(
-            onTap: onToggle,
+            onTap:
+                onToggle, // Tıklanınca yukarıdan gelen toggle fonksiyonu çalıştırılır
             child: SizedBox(
               height: maxheight * 0.04,
               child: Container(
@@ -54,7 +63,7 @@ class ShowMoreWidget extends StatelessWidget {
                       MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Daha Fazla Göster",
+                      "Daha Fazla Göster", // Kullanıcıya daha fazla işlem gösterme imkânı sunar
                       style: TextStyle(
                         color: Colors.teal,
                         fontWeight:
@@ -69,13 +78,14 @@ class ShowMoreWidget extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
 
+// Her işlem kategorisi için ortak satır tasarımı
 Padding Categories(
   String title, {
-  String? image,
+  String?
+  image, // Opsiyonel olarak "yeni" etiketi görseli
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(
@@ -91,21 +101,24 @@ Padding Categories(
           ),
           SizedBox(width: 5),
           image == null
-              ? SizedBox()
+              ? SizedBox() // Görsel yoksa boş alan
               : SizedBox(
                 height: 25,
                 child: Image.asset(
                   "images/yeni.png",
-                ),
+                ), // Yeni etiketi
               ),
           Spacer(),
-          Icon(Icons.arrow_right_alt),
+          Icon(
+            Icons.arrow_right_alt,
+          ), // Sağ yön simgesi
         ],
       ),
     ),
   );
 }
 
+// Satırları ayıran ince çizgi
 Dividing(double maxwidth) {
   return Divider(
     height: 0,
@@ -115,6 +128,6 @@ Dividing(double maxwidth) {
       237,
       236,
       236,
-    ),
+    ), // Açık gri renk
   );
 }

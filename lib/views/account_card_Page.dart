@@ -6,11 +6,17 @@ class AccountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double maxheight =
-        MediaQuery.of(context).size.height;
+        MediaQuery.of(
+          context,
+        ).size.height; // Ekran yüksekliği
     double maxwidth =
-        MediaQuery.of(context).size.width;
+        MediaQuery.of(
+          context,
+        ).size.width; // Ekran genişliği
+
     return Scaffold(
       body: SafeArea(
+        // Çentik gibi alanlara girmemesi için
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 15,
@@ -22,6 +28,7 @@ class AccountCard extends StatelessWidget {
                     MainAxisAlignment.end,
                 children: [
                   Icon(
+                    // Sağ üstte arama ikonu
                     Icons.search,
                     color: Colors.teal,
                     size: 30,
@@ -30,9 +37,9 @@ class AccountCard extends StatelessWidget {
               ),
               SizedBox(height: maxheight * 0.04),
               Row(
-                // Hesap ve Kart başlığı
                 children: [
                   Text(
+                    // Başlık
                     "Hesap ve Kart",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
@@ -43,6 +50,7 @@ class AccountCard extends StatelessWidget {
               ),
               SizedBox(height: maxheight * 0.05),
               Container(
+                // Hesap/Kart içerik kartı
                 margin: EdgeInsets.only(
                   bottom: 15,
                 ),
@@ -51,12 +59,15 @@ class AccountCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius:
-                      BorderRadius.circular(10),
+                      BorderRadius.circular(
+                        10,
+                      ), // Yuvarlatılmış kenarlar
                 ),
                 child: Column(
                   mainAxisAlignment:
                       MainAxisAlignment.center,
                   children: [
+                    // Her bir kategori için liste öğesi
                     ListTileKategoriler(
                       Icon(
                         Icons
@@ -67,7 +78,9 @@ class AccountCard extends StatelessWidget {
                       maxheight,
                       maxwidth,
                     ),
-                    Dividing(maxwidth),
+                    Dividing(
+                      maxwidth,
+                    ), // Ayırıcı çizgi
                     ListTileKategoriler(
                       Icon(
                         Icons.credit_card,
@@ -152,7 +165,7 @@ class AccountCard extends StatelessWidget {
                 ),
               ),
               Container(
-                //Ayrı container da bulunan benim bankacım kısmı
+                // Benim Bankacım kısmı
                 width: maxwidth,
                 height: maxheight * 0.06,
                 decoration: BoxDecoration(
@@ -171,7 +184,7 @@ class AccountCard extends StatelessWidget {
                         height: maxheight * 0.04,
                         child: Image.asset(
                           "images/elmas.png",
-                        ),
+                        ), // Sol ikon
                       ),
                     ),
                     Column(
@@ -183,9 +196,6 @@ class AccountCard extends StatelessWidget {
                               .center,
                       children: [
                         Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment
-                                  .start,
                           children: [
                             Padding(
                               padding:
@@ -202,7 +212,7 @@ class AccountCard extends StatelessWidget {
                                   0.02,
                               child: Image.asset(
                                 "images/yeni.png",
-                              ),
+                              ), // "yeni" etiketi resmi
                             ),
                           ],
                         ),
@@ -220,7 +230,7 @@ class AccountCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Spacer(),
+                    Spacer(), // Boşluk bırakır
                     Padding(
                       padding:
                           const EdgeInsets.only(
@@ -228,7 +238,7 @@ class AccountCard extends StatelessWidget {
                           ),
                       child: Icon(
                         Icons.arrow_right,
-                      ),
+                      ), // Sağ ok
                     ),
                   ],
                 ),
@@ -241,8 +251,8 @@ class AccountCard extends StatelessWidget {
   }
 }
 
+// Kategori kartı öğesi - tekrar eden yapılar için kullanılır
 ListTileKategoriler(
-  //Kategorileri yapmak için fonksiyon yazım kod tekrarı olmasın diye
   Icon icon,
   String categoryTitle,
   double maxheight,
@@ -263,24 +273,24 @@ ListTileKategoriler(
             ),
             child: icon,
           ),
-          Text(categoryTitle),
+          Text(categoryTitle), // Başlık yazısı
           Spacer(),
-          Icon(Icons.arrow_right),
+          Icon(Icons.arrow_right), // Sağ ok
         ],
       ),
     ),
   );
 }
 
+// Ayırıcı çizgi fonksiyonu
 Dividing(double maxwidth) {
-  //Fonksiyon sadece aradaki çizgiyi çekmek için
   return Divider(
     thickness: 1,
-    color: const Color.fromARGB(
+    color: Color.fromARGB(
       255,
       237,
       236,
       236,
-    ),
+    ), // Açık gri çizgi
   );
 }

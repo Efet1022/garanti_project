@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/views/account_cardPage.dart';
-import 'package:garanti_project/views/applicationsPage.dart';
+import 'package:garanti_project/views/account_card_Page.dart';
+import 'package:garanti_project/views/applications_Page.dart';
 import 'package:garanti_project/views/homePage.dart';
 import 'package:garanti_project/views/statusPage.dart';
 import 'package:garanti_project/views/transactionsPage.dart';
@@ -10,17 +10,18 @@ class BasePage extends StatefulWidget {
 
   @override
   State<BasePage> createState() =>
-      _HomePageState();
+      _HomePageState(); // State sınıfı
 }
 
 class _HomePageState extends State<BasePage> {
-  int selectedIndex = 0;
+  int selectedIndex = 0; // Seçilen tab'ın indeksi
+
   final List pages = [
-    Homepage(),
-    AccountCard(),
-    Applicationspage(),
-    Transactionspage(),
-    Statuspage(),
+    Homepage(), // 0 - Anasayfa
+    AccountCard(), // 1 - Hesap ve Kart
+    Applicationspage(), // 2 - Başvurular
+    Transactionspage(), // 3 - İşlemler
+    Statuspage(), // 4 - Durumum
   ];
 
   @override
@@ -31,22 +32,26 @@ class _HomePageState extends State<BasePage> {
         237,
         236,
         236,
-      ),
+      ), // Arka plan rengi
+
       bottomNavigationBar: BottomNavigationBar(
-        //Diğer sayfalara geçiş için oluşturdum
-        selectedItemColor: Colors.green,
-        currentIndex: selectedIndex,
+        // Sayfalar arası geçişi sağlayan alt menü
+        selectedItemColor:
+            Colors.green, // Seçili ikon rengi
+        currentIndex:
+            selectedIndex, // Aktif sekme
         onTap: (int index) {
           setState(() {
             selectedIndex =
-                index; //Yukarıda tanımladığım sayfa listesine göre hangi konu verdiysem o sırayla verdim yoksa hatalı sayfaya geçiş yapar
+                index; // Tıklanan index'e göre sayfa değiştir
           });
         },
         selectedFontSize: 11,
         unselectedFontSize: 11,
         type:
             BottomNavigationBarType
-                .fixed, //Bütün ikonları gözükmesi için yazdım
+                .fixed, // Tüm ikonlar aynı anda görünür
+
         items: [
           BottomNavigationBarItem(
             label: "Anasayfa",
@@ -70,7 +75,9 @@ class _HomePageState extends State<BasePage> {
           ),
         ],
       ),
-      body: pages[selectedIndex],
+
+      body:
+          pages[selectedIndex], // Seçilen sayfa burada gösterilir
     );
   }
 }

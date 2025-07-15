@@ -1,41 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'; // Sayfa göstergesi için kütüphane
 
 class Applicationspage extends StatelessWidget {
   Applicationspage({super.key});
 
   final PageController controller =
-      PageController();
+      PageController(); // Sayfaları kontrol etmek için kullanılır
+
   @override
   Widget build(BuildContext context) {
     double maxheight =
-        MediaQuery.of(context).size.height;
+        MediaQuery.of(
+          context,
+        ).size.height; // Ekran yüksekliği
     double maxwidth =
-        MediaQuery.of(context).size.width;
+        MediaQuery.of(
+          context,
+        ).size.width; // Ekran genişliği
+
     return Scaffold(
       body: CustomScrollView(
+        // Kaydırılabilir sayfa yapısı
         slivers: [
           SliverAppBar(
-            //Başvurular yazısı kaybolsun diye sliver app bar koydum
+            // Üst bar kaybolup sabitlenebilir yapı
             expandedHeight: maxheight * 0.11,
             actions: [
               Icon(
                 Icons.add_box,
                 size: 25,
                 color: Colors.teal,
-              ),
+              ), // Sağ üstte ekleme simgesi
               SizedBox(width: maxwidth * 0.05),
               Icon(
                 Icons.search,
                 size: 25,
                 color: Colors.teal,
-              ),
+              ), // Sağ üstte arama simgesi
               SizedBox(width: maxwidth * 0.05),
             ],
             centerTitle: true,
-            pinned: true,
+            pinned:
+                true, // App bar ekranın üstüne sabitlenir
             flexibleSpace: FlexibleSpaceBar(
-              //Hareketli bir alan oluşturmak için
+              // App bar esnek alan
               collapseMode: CollapseMode.pin,
               background: Padding(
                 padding: EdgeInsets.only(
@@ -44,7 +52,7 @@ class Applicationspage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(
-                    "Başvurular",
+                    "Başvurular", // Başlık
                     style: TextStyle(
                       fontSize: 28,
                     ),
@@ -54,21 +62,21 @@ class Applicationspage extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            //Sliver tipinde kullanmamak için sadece
+            // Normal widget kullanmak için
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20,
                 horizontal: 15,
               ),
               child: SingleChildScrollView(
+                // İçeriği kaydırılabilir yapar
                 child: Column(
                   children: [
                     SizedBox(
                       height: maxheight * 0.22,
                       child: PageView(
-                        //Sayfaların yana kaymasını sağlıyor
-                        controller:
-                            controller, //Hangi resimde olduğumuzu kontrol etmek için
+                        // Yana kaydırmalı resimler
+                        controller: controller,
                         children: [
                           ClipRRect(
                             borderRadius:
@@ -80,7 +88,6 @@ class Applicationspage extends StatelessWidget {
                               fit: BoxFit.fill,
                             ),
                           ),
-
                           Container(
                             margin:
                                 EdgeInsets.symmetric(
@@ -114,12 +121,12 @@ class Applicationspage extends StatelessWidget {
                       height: maxheight * 0.01,
                     ),
                     SmoothPageIndicator(
-                      //Resimlerin altındaki ufak toplar
+                      // Resim altındaki sayfa noktaları
                       controller: controller,
                       count: 3,
                       effect: ScrollingDotsEffect(
                         activeDotColor:
-                            const Color.fromARGB(
+                            Color.fromARGB(
                               255,
                               8,
                               82,
@@ -150,6 +157,7 @@ class Applicationspage extends StatelessWidget {
                             MainAxisAlignment
                                 .spaceEvenly,
                         children: [
+                          // Her bir başvuru seçeneği için özel tasarım list tile'lar
                           ListTileCategories(
                             Icon(
                               Icons.credit_card,
@@ -160,7 +168,9 @@ class Applicationspage extends StatelessWidget {
                             maxheight,
                             maxwidth,
                           ),
-                          Dividing(maxwidth),
+                          Dividing(
+                            maxwidth,
+                          ), // Ayırıcı çizgi
                           ListTileCategories(
                             Icon(
                               Icons.attach_money,
@@ -194,7 +204,7 @@ class Applicationspage extends StatelessWidget {
                             maxheight,
                             maxwidth,
                             photo:
-                                "images/ozel.png",
+                                "images/ozel.png", // Yanında ikon resmi
                           ),
                           Dividing(maxwidth),
                           ListTileCategories(
@@ -300,6 +310,7 @@ class Applicationspage extends StatelessWidget {
   }
 }
 
+// Başvuru türlerini listeleyen özel bir widget
 ListTileCategories(
   Icon icon,
   String title,
@@ -342,7 +353,9 @@ ListTileCategories(
                   photo != null
                       ? SizedBox(
                         height: maxheight * 0.021,
-                        child: Image.asset(photo),
+                        child: Image.asset(
+                          photo,
+                        ), // Eğer varsa resim göster
                       )
                       : SizedBox(),
                 ],
@@ -356,22 +369,24 @@ ListTileCategories(
               ),
             ],
           ),
-          Spacer(),
-          Icon(Icons.arrow_right),
+          Spacer(), // Boşluk bırak
+          Icon(Icons.arrow_right), // Ok simgesi
         ],
       ),
     ),
   );
 }
 
+// Liste elemanları arasında ayırıcı çizgi oluşturan fonksiyon
 Dividing(double maxwidth) {
   return Divider(
+    height: 0,
     thickness: 1,
-    color: const Color.fromARGB(
+    color: Color.fromARGB(
       255,
       237,
       236,
       236,
-    ),
+    ), // Açık gri çizgi
   );
 }

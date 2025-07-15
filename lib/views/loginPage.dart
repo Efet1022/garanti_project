@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/views/basePage.dart';
+import 'package:garanti_project/views/base_Page.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});

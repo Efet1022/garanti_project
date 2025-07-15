@@ -15,21 +15,23 @@ class _TransactionspageState
     extends State<Transactionspage> {
   @override
   Widget build(BuildContext context) {
+    // Ekran boyutları alınıyor
     double maxheight =
         MediaQuery.of(context).size.height;
     double maxwidth =
         MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 15,
-          ),
+          ), // Genel yatay padding
           child: Column(
             children: [
               Row(
                 children: [
-                  Spacer(),
+                  Spacer(), // Arama ikonunu sağa yaslamak için
                   Icon(
                     Icons.search,
                     color: Colors.teal,
@@ -37,9 +39,11 @@ class _TransactionspageState
                   ),
                 ],
               ),
-              SizedBox(height: maxheight * 0.04),
+              SizedBox(
+                height: maxheight * 0.04,
+              ), // Üst boşluk
               Row(
-                // Başlık
+                // Sayfa başlığı
                 children: [
                   Text(
                     "İşlemler",
@@ -50,7 +54,10 @@ class _TransactionspageState
                   ),
                 ],
               ),
-              SizedBox(height: maxheight * 0.05),
+              SizedBox(
+                height: maxheight * 0.05,
+              ), // Başlık altı boşluk
+              // Ana kutu: işlem seçenekleri
               Container(
                 padding: EdgeInsets.all(8),
                 margin: EdgeInsets.only(
@@ -68,6 +75,7 @@ class _TransactionspageState
                       MainAxisAlignment
                           .spaceEvenly,
                   children: [
+                    // Para Transferi seçeneği
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -103,17 +111,19 @@ class _TransactionspageState
                               Text(
                                 "Para Transferleri",
                               ),
-
                               Spacer(),
                               Icon(
                                 Icons.arrow_right,
-                              ),
+                              ), // Sağ ok
                             ],
                           ),
                         ),
                       ),
                     ),
-                    Dividing(maxwidth),
+                    Dividing(
+                      maxwidth,
+                    ), // Ayırıcı çizgi
+                    // Ödemeler seçeneği
                     GestureDetector(
                       onTap: () {
                         setState(() {
@@ -161,7 +171,7 @@ class _TransactionspageState
                                     0.025,
                                 child: Image.asset(
                                   "images/yeni.png",
-                                ),
+                                ), // 'Yeni' etiketi
                               ),
                               Spacer(),
                               Icon(
@@ -173,6 +183,8 @@ class _TransactionspageState
                       ),
                     ),
                     Dividing(maxwidth),
+
+                    // Ödeme İste
                     ListTileKategoriler(
                       Icon(
                         Icons.request_page,
@@ -183,6 +195,8 @@ class _TransactionspageState
                       maxwidth,
                     ),
                     Dividing(maxwidth),
+
+                    // Döviz ve Kıymetli Madenler
                     ListTileKategoriler(
                       Icon(
                         Icons.attach_money,
@@ -193,6 +207,8 @@ class _TransactionspageState
                       maxwidth,
                     ),
                     Dividing(maxwidth),
+
+                    // Yatırımlar
                     ListTileKategoriler(
                       Icon(
                         Icons.trending_up,
@@ -203,6 +219,8 @@ class _TransactionspageState
                       maxwidth,
                     ),
                     Dividing(maxwidth),
+
+                    // Kripto Para
                     ListTileKategoriler(
                       Icon(
                         Icons.currency_bitcoin,
@@ -212,9 +230,11 @@ class _TransactionspageState
                       maxheight,
                       maxwidth,
                       categoryImage:
-                          "images/yeni.png",
+                          "images/yeni.png", // 'Yeni' etiketi
                     ),
                     Dividing(maxwidth),
+
+                    // Başvurular
                     ListTileKategoriler(
                       Icon(
                         Icons.add_circle_outline,
@@ -225,6 +245,8 @@ class _TransactionspageState
                       maxwidth,
                     ),
                     Dividing(maxwidth),
+
+                    // TR Karekod İşlemleri
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -270,6 +292,8 @@ class _TransactionspageState
                       ),
                     ),
                     Dividing(maxwidth),
+
+                    // Akıllı İşlemler
                     ListTileKategoriler(
                       Icon(
                         Icons.auto_fix_high,
@@ -290,12 +314,14 @@ class _TransactionspageState
   }
 }
 
+// İşlem satırlarını oluşturan yardımcı fonksiyon
 ListTileKategoriler(
   Icon icon,
   String categoryTitle,
   double maxheight,
   double maxwidth, {
-  String? categoryImage,
+  String?
+  categoryImage, // Opsiyonel resim (örneğin 'yeni')
 }) {
   return SizedBox(
     height: maxheight * 0.038,
@@ -323,13 +349,14 @@ ListTileKategoriler(
               )
               : SizedBox(),
           Spacer(),
-          Icon(Icons.arrow_right),
+          Icon(Icons.arrow_right), // Sağ ok
         ],
       ),
     ),
   );
 }
 
+// Satırları ayıran çizgi
 Dividing(double maxwidth) {
   return Divider(
     thickness: 1,
@@ -338,6 +365,6 @@ Dividing(double maxwidth) {
       237,
       236,
       236,
-    ),
+    ), // Açık gri renk
   );
 }

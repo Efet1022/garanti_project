@@ -1,33 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/views/bills.dart';
+import 'package:garanti_project/views/bills.dart'; // Fatura sayfasına geçiş için
 
 class PaymentsPage extends StatelessWidget {
   const PaymentsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Ekran boyut bilgileri
     double maxheight =
         MediaQuery.of(context).size.height;
     double maxwidth =
         MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
+          // Üstte scroll ile küçülen app bar
           SliverAppBar(
-            expandedHeight: maxheight * 0.11,
+            expandedHeight:
+                maxheight *
+                0.11, // App bar yüksekliği
             centerTitle: true,
-            pinned: true,
+            pinned:
+                true, // Scroll edilince yukarıda sabit kalır
             leading: IconButton(
               onPressed:
-                  () => Navigator.pop(context),
+                  () => Navigator.pop(
+                    context,
+                  ), // Geri tuşu
               icon: Icon(
                 Icons.arrow_back,
                 color: Colors.teal,
               ),
             ),
             flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.pin,
-
+              collapseMode:
+                  CollapseMode
+                      .pin, // Scroll edilince yapışır
               background: Padding(
                 padding: EdgeInsets.only(
                   left: 15,
@@ -35,7 +44,7 @@ class PaymentsPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(
-                    "Ödemeler",
+                    "Ödemeler", // Sayfa başlığı
                     style: TextStyle(
                       fontSize: 28,
                     ),
@@ -44,6 +53,7 @@ class PaymentsPage extends StatelessWidget {
               ),
             ),
           ),
+          // Scroll edilebilir içerik
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -54,19 +64,22 @@ class PaymentsPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: maxheight * 0.04,
-                    ),
+                    ), // Üst boşluk
                     Container(
-                      height: maxheight * 0.96,
+                      height:
+                          maxheight *
+                          0.96, // Liste yüksekliği
                       width: maxwidth,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
                             BorderRadius.circular(
                               10,
-                            ),
+                            ), // Köşeleri yuvarla
                       ),
                       child: Column(
                         children: [
+                          // Fatura seçeneği - tıklanınca Bills sayfasına gider
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -100,7 +113,7 @@ class PaymentsPage extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Text(
-                                        "Fatura",
+                                        "Fatura", // Ödeme kategorisi
                                         style: TextStyle(
                                           fontSize:
                                               15,
@@ -110,14 +123,16 @@ class PaymentsPage extends StatelessWidget {
                                       Icon(
                                         Icons
                                             .arrow_right,
-                                      ),
+                                      ), // Sağ ok
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          Dividing(maxwidth),
+                          Dividing(
+                            maxwidth,
+                          ), // Ayırıcı çizgi
                           ListTileKategoriler(
                             "Kredi Kartı Borcu Ödeme",
                             maxheight,
@@ -132,10 +147,10 @@ class PaymentsPage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileKategoriler(
                             "Garanti Pay",
-                            categoryImage:
-                                "images/yeni.png",
                             maxheight,
                             maxwidth,
+                            categoryImage:
+                                "images/yeni.png",
                           ),
                           Dividing(maxwidth),
                           ListTileKategoriler(
@@ -164,10 +179,10 @@ class PaymentsPage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileKategoriler(
                             "Ulaşım Kartları",
-                            categoryImage:
-                                "images/yeni.png",
                             maxheight,
                             maxwidth,
+                            categoryImage:
+                                "images/yeni.png",
                           ),
                           Dividing(maxwidth),
                           ListTileKategoriler(
@@ -178,10 +193,10 @@ class PaymentsPage extends StatelessWidget {
                           Dividing(maxwidth),
                           ListTileKategoriler(
                             "Güvenli Alım Satım",
-                            categoryImage:
-                                "images/yeni.png",
                             maxheight,
                             maxwidth,
+                            categoryImage:
+                                "images/yeni.png",
                           ),
                           Dividing(maxwidth),
                           ListTileKategoriler(
@@ -224,7 +239,7 @@ class PaymentsPage extends StatelessWidget {
                     ),
                     SizedBox(
                       height: maxheight * 0.05,
-                    ),
+                    ), // Alt boşluk
                   ],
                 ),
               ),
@@ -236,11 +251,13 @@ class PaymentsPage extends StatelessWidget {
   }
 }
 
+// Ödeme kategorileri için liste elemanı
 ListTileKategoriler(
-  String categoryTitle,
+  String categoryTitle, // Başlık
   double maxheight,
   double maxwidth, {
-  String? categoryImage,
+  String?
+  categoryImage, // Sağda küçük resim (örn: "yeni" ikonu)
 }) {
   return SizedBox(
     height: maxheight * 0.04,
@@ -261,18 +278,22 @@ ListTileKategoriler(
               style: TextStyle(fontSize: 15),
             ),
             categoryImage != null
-                ? SizedBox(width: maxwidth * 0.01)
+                ? SizedBox(
+                  width: maxwidth * 0.01,
+                ) // Resim varsa boşluk bırak
                 : Container(),
             categoryImage != null
                 ? SizedBox(
                   height: maxheight * 0.025,
                   child: Image.asset(
                     categoryImage,
-                  ),
+                  ), // "yeni" resmi gibi küçük simge
                 )
                 : SizedBox(),
             Spacer(),
-            Icon(Icons.arrow_right),
+            Icon(
+              Icons.arrow_right,
+            ), // Sağ ok simgesi
           ],
         ),
       ),
@@ -280,6 +301,7 @@ ListTileKategoriler(
   );
 }
 
+// Aralara çizgi ekleyen fonksiyon
 Dividing(double maxwidth) {
   return Divider(
     thickness: 1,
@@ -288,6 +310,6 @@ Dividing(double maxwidth) {
       237,
       236,
       236,
-    ),
+    ), // Açık gri çizgi
   );
 }

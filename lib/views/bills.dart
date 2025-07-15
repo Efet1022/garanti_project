@@ -6,19 +6,26 @@ class Bills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double maxheight =
-        MediaQuery.of(context).size.height;
+        MediaQuery.of(
+          context,
+        ).size.height; // Ekran yüksekliği
     double maxwidth =
-        MediaQuery.of(context).size.width;
+        MediaQuery.of(
+          context,
+        ).size.width; // Ekran genişliği
+
     return Scaffold(
       appBar: AppBar(
-        //Geri dönüş tuşunu teal rengi yaptım
+        // Üstteki geri tuşu
         leading: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(
+              context,
+            ); // Geri tuşuna basınca önceki sayfaya dön
           },
           child: Icon(
             Icons.arrow_back,
-            color: Colors.teal,
+            color: Colors.teal, // İkon rengi
             size: 30,
           ),
         ),
@@ -30,7 +37,7 @@ class Bills extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              //Fatura Başlık
+              // Sayfa başlığı
               children: [
                 Text(
                   "Fatura",
@@ -43,13 +50,15 @@ class Bills extends StatelessWidget {
             ),
             SizedBox(height: maxheight * 0.02),
             Container(
-              //2 adet kategori
+              // Fatura ödeme ve kayıtlı fatura işlemleri kartı
               width: maxwidth,
               height: maxheight * 0.18,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius:
-                    BorderRadius.circular(10),
+                    BorderRadius.circular(
+                      10,
+                    ), // Köşeleri yumuşat
               ),
               child: Column(
                 children: [
@@ -68,9 +77,11 @@ class Bills extends StatelessWidget {
                     ),
                     trailing: Icon(
                       Icons.arrow_right,
-                    ),
+                    ), // Sağ ok
                   ),
-                  Dividing(maxwidth),
+                  Dividing(
+                    maxwidth,
+                  ), // Ayırıcı çizgi
                   SizedBox(
                     height: maxheight * 0.04,
                     child: ListTile(
@@ -89,6 +100,7 @@ class Bills extends StatelessWidget {
               ),
             ),
             Container(
+              // Yeni fatura talimatı öneri kartı
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10,
@@ -97,7 +109,9 @@ class Bills extends StatelessWidget {
               height: maxheight * 0.14,
               margin: EdgeInsets.only(top: 15),
               decoration: BoxDecoration(
-                color: Color(0xffE0E4F3),
+                color: Color(
+                  0xffE0E4F3,
+                ), // Açık mavi arka plan
                 borderRadius:
                     BorderRadius.circular(10),
               ),
@@ -121,7 +135,8 @@ class Bills extends StatelessWidget {
                         height: maxheight * 0.005,
                       ),
                       Text(
-                        "Faturalarınızın son ödeme gününü\ndüşünmemek için talimat verebilirsiniz.",
+                        "Faturalarınızın son ödeme gününü\n"
+                        "düşünmemek için talimat verebilirsiniz.",
                       ),
                       Spacer(),
                       Row(
@@ -158,7 +173,7 @@ class Bills extends StatelessWidget {
                           height: maxheight * 0.1,
                           child: Image.asset(
                             "images/fatura.png",
-                          ),
+                          ), // Sağdaki görsel
                         ),
                       ],
                     ),
@@ -173,14 +188,15 @@ class Bills extends StatelessWidget {
   }
 }
 
+// İki öğe arasında ayırıcı çizgi çeken fonksiyon
 Dividing(double maxwidth) {
   return Divider(
     thickness: 1,
-    color: const Color.fromARGB(
+    color: Color.fromARGB(
       255,
       237,
       236,
       236,
-    ),
+    ), // Açık gri
   );
 }

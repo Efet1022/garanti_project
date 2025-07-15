@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:garanti_project/widgets/pay_With_Card_Numbers.dart';
-import 'package:garanti_project/widgets/saved_Card_Transactions.dart';
+import 'package:garanti_project/widgets/pay_With_Card_Numbers.dart'; // Kart numarasıyla ödeme widget'ı
+import 'package:garanti_project/widgets/saved_Card_Transactions.dart'; // Kayıtlı kart işlemleri widget'ı
 
 class CreditCardPayment extends StatefulWidget {
   const CreditCardPayment({super.key});
@@ -12,18 +12,26 @@ class CreditCardPayment extends StatefulWidget {
 
 class _CreditCardPaymentState
     extends State<CreditCardPayment> {
-  int selectedValue = 1;
+  int selectedValue =
+      1; // Radio buton seçimi için (varsayılan 1 - kayıtlı kart)
+
   @override
   Widget build(BuildContext context) {
     double maxheight =
-        MediaQuery.of(context).size.height;
+        MediaQuery.of(
+          context,
+        ).size.height; // Ekran yüksekliği
     double maxwidth =
-        MediaQuery.of(context).size.width;
+        MediaQuery.of(
+          context,
+        ).size.width; // Ekran genişliği
+
     return Scaffold(
       appBar: AppBar(
+        // Geri tuşu
         leading: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // Geri dön
           },
           child: Icon(
             Icons.arrow_back,
@@ -33,6 +41,7 @@ class _CreditCardPaymentState
         ),
         actions: [
           Icon(
+            // Bilgi ikonu
             Icons.info_outline_rounded,
             color: Colors.teal,
             size: 25,
@@ -50,7 +59,7 @@ class _CreditCardPaymentState
             Row(
               children: [
                 Text(
-                  "Kart Borcu Ödeme",
+                  "Kart Borcu Ödeme", // Sayfa başlığı
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 24,
@@ -61,14 +70,19 @@ class _CreditCardPaymentState
             SizedBox(height: maxheight * 0.03),
             Row(
               children: [
+                // Kullanıcıya bilgilendirme metni
                 Text(
-                  "S&F PLATINUM AMEX Kartınız için bu ay ödemeniz gereken\nborcunuz bulunmuyor. Yine de bu kartınıza ödeme yapmak\nisterseniz kartınız için belirlenen limitler dahilinde ödemenizi\ngerçekleştirebilirsiniz.",
+                  "S&F PLATINUM AMEX Kartınız için bu ay ödemeniz gereken\n"
+                  "borcunuz bulunmuyor. Yine de bu kartınıza ödeme yapmak\n"
+                  "isterseniz kartınız için belirlenen limitler dahilinde ödemenizi\n"
+                  "gerçekleştirebilirsiniz.",
                   style: TextStyle(fontSize: 13),
                 ),
               ],
             ),
             SizedBox(height: maxheight * 0.02),
             Container(
+              // Ödeme tipi seçim alanı (radio buttons)
               height: maxheight * 0.165,
               width: maxwidth,
               color: Colors.white,
@@ -83,7 +97,7 @@ class _CreditCardPaymentState
                     child: Row(
                       children: [
                         Text(
-                          "Ödeme Tipi",
+                          "Ödeme Tipi", // Alt başlık
                           style: TextStyle(
                             color: Colors.black54,
                           ),
@@ -92,16 +106,18 @@ class _CreditCardPaymentState
                     ),
                   ),
                   RadioListTile(
-                    radioScaleFactor: 1.5,
+                    radioScaleFactor:
+                        1.5, // Radyo boyutu
                     activeColor: Colors.teal,
                     title: Text(
-                      "Kayıtlı Kart İşlemleri",
+                      "Kayıtlı Kart İşlemleri", // Seçenek 1
                       style: TextStyle(
                         fontSize: 17,
                       ),
                     ),
                     value: 1,
-                    groupValue: selectedValue,
+                    groupValue:
+                        selectedValue, // Hangi seçenek seçili
                     onChanged: (value) {
                       setState(() {
                         selectedValue = value!;
@@ -117,7 +133,7 @@ class _CreditCardPaymentState
                     radioScaleFactor: 1.5,
                     activeColor: Colors.teal,
                     title: Text(
-                      "Kart No ile Ödeme",
+                      "Kart No ile Ödeme", // Seçenek 2
                       style: TextStyle(
                         fontSize: 17,
                       ),
@@ -134,6 +150,8 @@ class _CreditCardPaymentState
               ),
             ),
             SizedBox(height: maxheight * 0.02),
+
+            // Seçime göre ilgili widget'ı göster
             if (selectedValue == 1)
               SavedCardTransactions(
                 maxheight: maxheight,

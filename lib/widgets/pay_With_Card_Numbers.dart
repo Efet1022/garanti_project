@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class PayWithCardNumbers extends StatefulWidget {
   final double maxheight;
   final double maxwidth;
+
   const PayWithCardNumbers({
     super.key,
     required this.maxheight,
@@ -16,11 +17,13 @@ class PayWithCardNumbers extends StatefulWidget {
 
 class _PayWithCardNumbersState
     extends State<PayWithCardNumbers> {
-  bool check = true;
+  bool check = true; // Checkbox kontrol durumu
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Kart Tipi seçimi
         Container(
           padding: EdgeInsets.only(left: 10),
           width: widget.maxwidth,
@@ -38,14 +41,20 @@ class _PayWithCardNumbersState
                 ),
               ),
               Spacer(),
-              Icon(Icons.arrow_right),
+              Icon(
+                Icons.arrow_right,
+              ), // Sağ yön simgesi
               SizedBox(
                 width: widget.maxwidth * 0.01,
               ),
             ],
           ),
         ),
-        SizedBox(height: widget.maxheight * 0.01),
+
+        SizedBox(
+          height: widget.maxheight * 0.01,
+        ), // Boşluk
+        // Hesap seçimi
         Container(
           padding: EdgeInsets.only(left: 10),
           width: widget.maxwidth,
@@ -70,7 +79,10 @@ class _PayWithCardNumbersState
             ],
           ),
         ),
+
         SizedBox(height: widget.maxheight * 0.01),
+
+        // Kart numarası alanı (şimdilik sadece metin olarak görünüyor)
         Container(
           padding: EdgeInsets.only(left: 10),
           width: widget.maxwidth,
@@ -90,7 +102,10 @@ class _PayWithCardNumbersState
             ],
           ),
         ),
+
         SizedBox(height: widget.maxheight * 0.01),
+
+        // Tutar alanı (şimdilik sadece metin olarak görünüyor)
         Container(
           padding: EdgeInsets.only(left: 10),
           width: widget.maxwidth,
@@ -110,7 +125,10 @@ class _PayWithCardNumbersState
             ],
           ),
         ),
+
         SizedBox(height: widget.maxheight * 0.01),
+
+        // Ödeme kaydı tanımlama checkbox'ı
         Container(
           width: widget.maxwidth,
           height: widget.maxheight * 0.06,
@@ -122,7 +140,8 @@ class _PayWithCardNumbersState
                 value: check,
                 onChanged: (value) {
                   setState(() {
-                    check = !check;
+                    check =
+                        !check; // Checkbox durumunu değiştir
                   });
                 },
               ),
@@ -133,20 +152,27 @@ class _PayWithCardNumbersState
             ],
           ),
         ),
+
         SizedBox(height: widget.maxheight * 0.01),
+
+        // Devam butonu
         SizedBox(
           height: widget.maxheight * 0.06,
           width: widget.maxwidth,
           child: TextButton(
             style: TextButton.styleFrom(
-              backgroundColor: Colors.teal,
-              shape: RoundedRectangleBorder(),
+              backgroundColor:
+                  Colors.teal, // Buton rengi
+              shape:
+                  RoundedRectangleBorder(), // Köşeleri düz
             ),
-            onPressed: () {},
+            onPressed: () {
+              // Buton basıldığında yapılacak işlemler
+            },
             child: Text(
               "Devam",
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.white, // Yazı rengi
                 fontSize: 18,
               ),
             ),
